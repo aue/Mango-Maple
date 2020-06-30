@@ -1,0 +1,231 @@
+---
+---
+
+$base-font-family: "Palanquin", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$base-font-size:   20px;
+
+$spacing-unit: 50px;
+
+$text-color:       #F5F5F2;
+$background-color: #0B090C;
+$brand-color:      #74913e;
+$brand-alt-color:  #ce4646;
+
+$content-width: 1600px;
+$on-laptop: 1000px;
+
+@import "minima";
+@import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css');
+
+@mixin media-query-min($device) {
+  @media screen and (min-width: $device) {
+    @content;
+  }
+}
+
+:root {
+  --animate-delay: 0.125s;
+}
+
+body {
+  word-break: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-gap: $spacing-unit / 2;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50ch;
+  margin-top: $spacing-unit;
+  margin-bottom: $spacing-unit;
+
+  @include media-query-min($on-laptop) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grid-item {
+    video, img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.site-header {
+  border-top: 0;
+  border-bottom: 0;
+  min-height: 0;
+  text-align: center;
+  padding-top: $spacing-unit;
+  margin-bottom: $spacing-unit;
+
+  .site-title {
+    line-height: 0;
+    color: $text-color;
+    float: none;
+
+    img {
+      width: 250px;
+    }
+  }
+
+  .site-navigation {
+    margin-top: $spacing-unit / 2;
+    text-transform: uppercase;
+    @include relative-font-size(0.8);
+  }
+
+  @include media-query-min($on-laptop) {
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &:after {
+        display: none;
+      }
+    }
+
+    .site-navigation {
+      margin-top: 0;
+    }
+  }
+
+  a {
+    color: $text-color;
+  }
+}
+
+.wrapper {
+  p, ul {
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  p img {
+    max-width: none;
+    width: 100%;
+    margin-top: $spacing-unit / 2;
+    margin-bottom: $spacing-unit / 2;
+  }
+
+  @include media-query-min($on-palm) {
+    p, ul {
+      width: 75%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    p img {
+      width: percentage(100 / 75);
+      margin-left: percentage(-12.5 / 75);
+      margin-right: percentage(-12.5 / 75);
+    }
+  }
+
+  @include media-query-min($on-laptop) {
+    p, ul {
+      width: 50%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    p img {
+      width: 200%;
+      margin-left: -50%;
+      margin-right: -50%;
+    }
+  }
+}
+
+.site-footer {
+  border-top: 0;
+  text-align: center;
+  margin-top: $spacing-unit;
+  padding-top: 0;
+
+  .credits {
+    padding-top: $spacing-unit / 2;
+  }
+}
+
+.home {
+  h1 {
+    @include relative-font-size(2.75);
+    margin-bottom: 0;
+  }
+  h2 {
+    @include relative-font-size(2.5);
+    font-weight: $base-font-weight;
+  }
+  h3 {
+    margin-top: $spacing-unit;
+    text-align: center;
+  }
+
+  ul {
+    text-align: center;
+  
+    li {
+      list-style: none;
+      @include relative-font-size(2.5);
+    }
+  }
+
+  .about {
+    background-color: $brand-color;
+    background-image: linear-gradient(45deg, $brand-alt-color, $brand-color);
+    margin-top: $spacing-unit * 2;
+    padding: $spacing-unit * 2 $spacing-unit;
+    text-align: center;
+    transition: 0.5s background-color ease-in-out;
+    position: relative;
+    z-index: 1;
+
+    @include media-query($on-palm) {
+      h1 {
+        @include relative-font-size(2);
+      }
+    }
+
+    &:before {
+      opacity: 0;
+      background-image: linear-gradient(45deg, $brand-color, $brand-alt-color);
+      transition: 0.5s opacity ease-in-out;
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    &:hover {
+      background-color: $brand-alt-color;
+      &:before {
+        opacity: 1;
+      }
+    }
+
+    p {
+      margin-top: $spacing-unit / 2;
+
+      a, a:visited {
+        color: lighten($brand-color, 45%);
+      }
+    }
+  }
+}

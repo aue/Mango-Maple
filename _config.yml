@@ -1,0 +1,22 @@
+title: Mango Maple
+email: info@mangomaple.com
+tagline: Turning ideas into reality
+description: >-
+  Turning ideas into reality.
+#  A multidisciplinary agency, and more. 
+#  We work on branding, design, development, and turning ideas into reality.
+baseurl: ""
+url: "http://www.mangomaple.com"
+logo: "/assets/logo-black.png"
+google_analytics: "UA-86934540-1"
+
+header_pages:
+  - _pages/about.md
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+include:
+  - _pages
